@@ -46,6 +46,26 @@ contains
     tmp_alpha = 0.0
     res = -2 * x * gaussian(x, tmp_alpha)
   end function gaussian_prime
+  
+    pure function gelu(x, alpha) result(res)
+    ! Gaussian activation function.
+    real(rk), intent(in) :: x(:)
+    real(rk), intent(in) :: alpha
+    real(rk) :: res(size(x)) 
+    
+    res = 0.5 * x * (1.0 + tanh(0.79788456 * (x + 0.044715 * x**3)))
+  end function gelu
+
+  pure function gelu_prime(x, alpha) result(res)
+    ! First derivative of the Gaussian activation function.
+    real(rk), intent(in) :: x(:)
+    real(rk), intent(in) :: alpha
+    real(rk) :: tmp_alpha
+    real(rk) :: res(size(x)), c(size(x))
+    
+    c = 0.79788456 * (x + 0.044715 * x**3)
+    res = 0.5 * (1.0 + tanh(c) + x * (1.0 - tanh(c)**2) * (0.79788456 + 0.134145 * x**2))
+  end function gelu_prime
 
   pure function leaky_relu(x, alpha) result(res)
     !! Leaky REctified Linear Unit (RELU) activation function.
