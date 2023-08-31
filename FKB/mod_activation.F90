@@ -48,7 +48,7 @@ contains
   end function gaussian_prime
   
     pure function gelu(x, alpha) result(res)
-    ! Gaussian activation function.
+    ! Gaussian Error Linear Unit activation function.
     real(rk), intent(in) :: x(:)
     real(rk), intent(in) :: alpha
     real(rk) :: res(size(x)) 
@@ -57,7 +57,7 @@ contains
   end function gelu
 
   pure function gelu_prime(x, alpha) result(res)
-    ! First derivative of the Gaussian activation function.
+    ! First derivative of the Gaussian Error Linear Unit activation function.
     real(rk), intent(in) :: x(:)
     real(rk), intent(in) :: alpha
     real(rk) :: tmp_alpha
