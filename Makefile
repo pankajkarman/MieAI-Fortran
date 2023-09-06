@@ -12,7 +12,7 @@ INCLUDE_DIR = build/include
 LIB_DIR = build/lib
 
 # Source files
-SOURCES = $(SRC_DIR)/mod_kinds.F90 $(SRC_DIR)/mod_activation.F90 $(SRC_DIR)/mod_layer.F90 $(SRC_DIR)/mod_random.F90 $(SRC_DIR)/mod_dense_layer.F90 $(SRC_DIR)/mod_dropout_layer.F90 $(SRC_DIR)/mod_batchnorm_layer.F90 $(SRC_DIR)/mod_io.F90 $(SRC_DIR)/mod_parallel.F90 $(SRC_DIR)/mod_network.F90 $(SRC_DIR)/mod_scaler.F90
+SOURCES = $(SRC_DIR)/mod_kinds.F90 $(SRC_DIR)/mod_activation.F90 $(SRC_DIR)/mod_layer.F90 $(SRC_DIR)/mod_random.F90 $(SRC_DIR)/mod_dense_layer.F90 $(SRC_DIR)/mod_dropout_layer.F90 $(SRC_DIR)/mod_batchnorm_layer.F90 $(SRC_DIR)/mod_io.F90 $(SRC_DIR)/mod_parallel.F90 $(SRC_DIR)/mod_network.F90 $(SRC_DIR)/mod_transformer.F90
 
 #SOURCES = $(wildcard $(SRC_DIR)/*.F90)
 OBJECTS = $(patsubst $(SRC_DIR)/%.F90,$(BUILD_DIR)/%.o,$(SOURCES))

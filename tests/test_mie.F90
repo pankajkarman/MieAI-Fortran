@@ -1,7 +1,7 @@
 program MieAI
 	use mod_kinds, only: ik, rk
 	use mod_network, only: network_type
-	use mod_scaler, only: read_min_max_data
+	use mod_transformer, only: read_min_max_data
 
 	implicit none
 
