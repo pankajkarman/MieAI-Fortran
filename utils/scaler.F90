@@ -4,7 +4,7 @@ implicit none
 
 private
 
-public :: read_min_max_data, read_quantile_data
+public :: read_min_max_data, read_quantile_data, inverse_transform
 
 contains
 
@@ -60,4 +60,20 @@ subroutine read_quantile_data(filename, nrows, ext, scat, ssa, asy, qua, ppf)
     end do
     close(1)
 end subroutine read_quantile_data
+
+subroutine inverse_transform(value, ppf, references, nrows, inverse)
+    integer, intent(in) :: nrows
+    real(8), intent(in) :: value
+    real(8), intent(out) :: inverse
+    real(8), dimension(nrows), intent(in) :: ppf, references
+    integer :: i
+
+    do i = 2, nrows
+      if (value < ppf(i)) then
+        inverse = references(i-1) + (references(i) - references(i-1)) * &
+                             (value - ppf(i-1)) / (ppf(i) - ppf(i-1))
+        exit
+      end if
+    end do
+end subroutine inverse_transform
 end module scaler
