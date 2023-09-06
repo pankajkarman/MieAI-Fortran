@@ -1,26 +1,19 @@
 program test_quantile
-  use QuantileTransformer
-  implicit none
-  
-  ! Declare program variables
-  real(8), dimension(3) :: transformed_data, inverted_data
-  character(255) :: quantile_json
-  integer :: i
-
-  ! Load saved parameters
-  quantile_json = 'quantile_transformer_parameters.json'
-  call load_parameters(quantile_json)
-
-  ! Load transformed data
-  transformed_data = [0.1d0, 0.5d0, 0.9d0]
-
-  ! Perform inverse transformation
-  do i = 1, size(transformed_data)
-    inverted_data(i) = inverse_transform(transformed_data(i))
-  end do
-
-  ! Print results
-  print *, 'Transformed Data:', transformed_data
-  print *, 'Inverted Data:', inverted_data
-
+  use scaler, only: read_quantile_data
+  implicit none 
+    
+    integer :: j
+    integer, parameter :: nrows=500
+    real(8), dimension(nrows) :: ext, scat, ssa, asy, qua, ppf  
+    character(len=256), dimension(:), allocatable :: args
+    
+    allocate(args(1))
+    
+    call get_command_argument(1, args(1))
+    call read_quantile_data(args(1), nrows, ext, scat, ssa, asy, qua, ppf)   
+    
+    print*, "	  Num 		ext 			scat 			ssa 				asy 			qua 			ppf"  
+    do j=1,nrows
+        write(*, *) j, ext(j), scat(j), ssa(j), asy(j), qua(j), ppf(j)
+    end do
 end program test_quantile
