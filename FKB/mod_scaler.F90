@@ -1,4 +1,4 @@
-module scaler
+module mod_scaler
 
 implicit none
 
@@ -62,4 +62,4 @@ subroutine apply_minmax_scaling(data, n_samples, n_features, scaled_data)
     end do
 end subroutine apply_minmax_scaling
 
-end module scaler
+end module mod_scaler
