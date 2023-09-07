@@ -18,33 +18,39 @@ program MieAI
 
     character(len=256), dimension(:), allocatable :: args    
     character(20), dimension(nrows) :: vname   
+    character(len=256) :: min_max_file, quantile_transform_params, MieAI_file
+     namelist /input_parameters/ min_max_file, quantile_transform_params, MieAI_file
     
     allocate(exp_num(num), mie_input(7), mie_input1(7), input(num, 7), prediction(num, 3))
-    allocate(args(4))
+    allocate(args(1))
+    
+    open(unit=20, file="/home/b/b382177/python/MieF/MieAI.nml", status="old")
+    read(20, nml=input_parameters)
+    close(20)
+    
+    ! Print the namelist values
+    print *, "min_max_file =", min_max_file
+    print *, "quantile_transform_params_file =", quantile_transform_params
+    print *, "model_file =", MieAI_file
+    
+    ! load saved MieAI model
+    call net % load(MieAI_file)
+    
+    ! load saved min-max values for training data
+    call read_min_max_data(min_max_file, nrows, vname, max_vals, min_vals) 
+    
+    ! load parameters of quantile transformer
+    call read_quantile_data(quantile_transform_params, nrows1, ext, sca, asy, qua, ppf)  
     
     indices1 = [5, 13, 7, 8, 9, 10, 12]
     !indices2 = [1, 3, 4]
     indices2 = [1, 2, 4]
-
-    !num_args = command_argument_count()
-
-    call get_command_argument(1,args(1))
-    call get_command_argument(2,args(2))
-    call get_command_argument(3,args(3))
-    call get_command_argument(4,args(4))
-    
-    ! load saved MieAI model
-    call net % load(args(1))
-    
-    ! load saved min-max values for training data
-    call read_min_max_data(args(2), nrows, vname, max_vals, min_vals) 
-    
-    ! load parameters of quantile transformer
-    call read_quantile_data(args(3), nrows1, ext, sca, asy, qua, ppf)  
     
     ! read input data for optical properties calculation using MieAI    
     !print*, "    exp_num     coating, 	     x 		   n_core 	     k_core 	    n_shell 		k_shell 	lambda"
-    open(10, file=args(4))
+    !num_args = command_argument_count()
+    call get_command_argument(1,args(1))
+    open(10, file=args(1))
     read(10, *)
     
     ! transform input data using min-max scaling and predict optical properties using MieAI

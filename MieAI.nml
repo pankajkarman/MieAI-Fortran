@@ -1,0 +1,6 @@
+&input_parameters
+    min_max_file = '/home/b/b382177/python/MieF/data/mlp_min_max.csv'
+    quantile_transform_params = '/home/b/b382177/python/MieF/data/quantile_transform.csv'
+    MieAI_file = '/home/b/b382177/python/MieF/model/mie_quantile_17-08-2023.txt'
+/
+
