@@ -6,8 +6,17 @@ import numpy as np
 
 import numpy as np
 import math
-import keras
-import keras.backend as K
+
+import tensorflow as tf
+from tensorflow import keras
+#from tensorflow.keras.models import Sequential, Model
+#from tensorflow.keras.layers import Flatten
+#from tensorflow.keras.layers import Dense, Dropout, BatchNormalization
+#from tensorflow.keras.layers import Input, Activation
+#from keras import optimizers
+
+#import keras
+#import keras.backend as K
 from keras.models import Sequential, Model
 from keras.layers import Dense, Dropout, BatchNormalization
 from keras.layers import Input, Activation
