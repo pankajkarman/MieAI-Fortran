@@ -19,7 +19,7 @@ program MieAI
     character(len=256), dimension(:), allocatable :: args    
     character(20), dimension(nrows) :: vname   
     character(len=256) :: min_max_file, quantile_transform_params, MieAI_file
-     namelist /input_parameters/ min_max_file, quantile_transform_params, MieAI_file
+    namelist /input_parameters/ min_max_file, quantile_transform_params, MieAI_file
     
     allocate(exp_num(num), mie_input(7), mie_input1(7), input(num, 7), prediction(num, 3))
     allocate(args(1))
@@ -66,12 +66,12 @@ program MieAI
     close(10)
         
     ! Inverse transform MieAI prediction using inverse quantile tranform    
-    call inverse_quantile_transform(prediction, ext, sca, asy, ppf)
+    !call inverse_quantile_transform(prediction, ext, sca, asy, ppf)
     
     ! denromalize optocal properties using training min-max values
     do k = 1, 3
         idx = indices2(k)
-        prediction(:, k) = prediction(:, k) * (max_vals(idx) - min_vals(idx)) + min_vals(idx)
+        !prediction(:, k) = prediction(:, k) * (max_vals(idx) - min_vals(idx)) + min_vals(idx)
     end do        
 
     ! print MieAI prediction after post-processing

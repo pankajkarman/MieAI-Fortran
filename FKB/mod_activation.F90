@@ -11,6 +11,7 @@ module mod_activation
   public :: activation_function
   public :: gaussian, gaussian_prime
   public :: relu, relu_prime
+  public :: gelu, gelu_prime
   public :: sigmoid, sigmoid_prime
   public :: step, step_prime
   public :: tanhf, tanh_prime
@@ -51,9 +52,10 @@ contains
     ! Gaussian Error Linear Unit activation function.
     real(rk), intent(in) :: x(:)
     real(rk), intent(in) :: alpha
-    real(rk) :: res(size(x)) 
+    real(rk) :: res(size(x)), c(size(x)) 
     
-    res = 0.5 * x * (1.0 + tanh(0.79788456 * (x + 0.044715 * x**3)))
+    c = 0.79788456 * (x + 0.044715 * x**3)
+    res = 0.5 * x * (1.0 + tanh(c))
   end function gelu
 
   pure function gelu_prime(x, alpha) result(res)

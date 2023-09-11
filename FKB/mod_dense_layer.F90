@@ -61,7 +61,10 @@ contains
     select case(trim(activation))
       case('gaussian')
         layer % activation => gaussian
-        layer % activation_prime => gaussian_prime
+        layer % activation_prime => gaussian_prime    
+      case('gelu')
+        layer % activation => gelu
+        layer % activation_prime => gelu_prime
       case('relu')
         layer % activation => relu
         layer % activation_prime => relu_prime
