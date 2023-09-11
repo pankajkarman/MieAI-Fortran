@@ -10,7 +10,7 @@ Compile the MieAI model in the terminal using:
 make 
 ```
 
-This will create a static library, called libneural.a inside `build/lib/` folder, which contains necessary objects for linking fortran with keras using FKB bridge and an executable, called MieAI, in `bin` folder which can be executed by running:
+This will create a static library, called `libneural.a` inside `build/lib/` folder, which contains necessary objects for linking fortran with keras using FKB bridge and an executable, called MieAI, in `bin` folder which can be executed by running:
 
 ```bash
 ./bin/MieAI ./data/mie_input.txt 
