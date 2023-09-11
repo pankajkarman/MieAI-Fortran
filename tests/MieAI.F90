@@ -66,12 +66,12 @@ program MieAI
     close(10)
         
     ! Inverse transform MieAI prediction using inverse quantile tranform    
-    !call inverse_quantile_transform(prediction, ext, sca, asy, ppf)
+    call inverse_quantile_transform(prediction, ext, sca, asy, ppf)
     
     ! denromalize optocal properties using training min-max values
     do k = 1, 3
         idx = indices2(k)
-        !prediction(:, k) = prediction(:, k) * (max_vals(idx) - min_vals(idx)) + min_vals(idx)
+        prediction(:, k) = prediction(:, k) * (max_vals(idx) - min_vals(idx)) + min_vals(idx)
     end do        
 
     ! print MieAI prediction after post-processing
