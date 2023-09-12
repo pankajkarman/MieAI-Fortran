@@ -12,7 +12,7 @@ program MieAI
     integer, allocatable :: exp_num(:)
     
     real, allocatable :: mie_input(:), mie_input1(:), input(:,:)
-    real(8), allocatable :: prediction(:, :) 
+    real(8), allocatable :: prediction(:, :)
     real(8), dimension(nrows1) :: ext, sca, asy, qua, ppf
     real(8), dimension(nrows) :: min_vals, max_vals
 
@@ -40,7 +40,7 @@ program MieAI
     call read_min_max_data(min_max_file, nrows, vname, max_vals, min_vals) 
     
     ! load parameters of quantile transformer
-    call read_quantile_data(quantile_transform_params, nrows1, ext, sca, asy, qua, ppf)  
+    call read_quantile_data(quantile_transform_params, ext, sca, asy, qua, ppf, nrows1)  
     
     indices1 = [5, 13, 7, 8, 9, 10, 12]
     !indices2 = [1, 3, 4]

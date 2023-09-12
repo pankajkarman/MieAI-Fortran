@@ -35,19 +35,21 @@ subroutine read_min_max_data(filename, nrows, vname, max_vals, min_vals)
     close(1)
 end subroutine read_min_max_data
 
-subroutine read_quantile_data(filename, nrows, ext, sca, asy, qua, ppf)
+subroutine read_quantile_data(filename, ext, sca, asy, qua, ppf, nrows)
     implicit none    
     
+    real(8), dimension(:), intent(out) :: ext, sca, asy, qua, ppf
     character(256), intent(in) :: filename
+    character(256) :: line
     integer, intent(in) :: nrows
-    real(8), dimension(nrows), intent(out) :: ext, sca, asy, qua, ppf
     integer :: i, j, num
     
     open(1, file=filename, status='old', action='read')
     read(1, *) 
     
-    do j=1, nrows
-        read(1, '(A)', iostat=i) num, ext(j), sca(j), asy(j), qua(j), ppf(j)         
+    do j = 1, nrows  
+        read(1, '(A)', iostat=i) line
+        read(line, *) num, ext(j), sca(j), asy(j), qua(j), ppf(j)
     end do
     close(1)
 end subroutine read_quantile_data
