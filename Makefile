@@ -6,7 +6,7 @@ FFLAGS=-fcoarray=single
 SRC_DIR = FKB
 BIN_DIR = bin
 BUILD_DIR = build/obj
-TESTS_DIR = tests
+TESTS_DIR = src
 UTILS_DIR = utils
 INCLUDE_DIR = build/include
 LIB_DIR = build/lib
