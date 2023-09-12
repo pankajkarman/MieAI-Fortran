@@ -73,15 +73,10 @@ program MieAI
         idx = indices2(k)
         prediction(:, k) = prediction(:, k) * (max_vals(idx) - min_vals(idx)) + min_vals(idx)
     end do        
-
-    ! print MieAI prediction after post-processing
-    !print*, "	Extinction  		  SCA 		 	  Asym"
     
-    !print*, "	coating, 	x 		n_core 		k_core 		n_shell 	k_shell 	lambda			Extinction  		  SCA 		 	  Asym "
-    
-    print*, "	coating, 	x 		lambda		Extinction 			  SCA 		 	  Asym "
+    print*, "	coating 	x 		n_core 		k_core 		n_shell 	  k_shell 	  lambda		Extinction  		  SCA 		 	  Asym "
     
     do i = 1, num
-        print*, input(i, [1,2,7]), prediction(i, :)
+        print*, input(i, :), prediction(i, :)
     end do    
 end program

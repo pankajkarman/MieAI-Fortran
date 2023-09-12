@@ -1,4 +1,4 @@
-# ICON-MieAI
+# MieAI-Fortran
 
 Fortran engine to couple neural network based Mie emulator, called MieAI, with ICON-ART
 
@@ -24,4 +24,4 @@ Here, [`mie_input.txt`](./data/mie_input.txt) cantains the input data for Mie ca
 
 - [model](./model): This directory contains various trained MieAI models
 
-- [data](./data): THis directory contains data to be fed to MieAI
+- [data](./data): This directory contains data to be fed to MieAI
