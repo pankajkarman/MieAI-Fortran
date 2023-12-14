@@ -2,6 +2,9 @@
 
 Fortran engine to couple neural network based Mie emulator, called MieAI, with ICON-ART
 
+
+It uses [Fortran-Keras Bridge](https://github.com/scientific-computing/FKB) for coupling MieAI to Fortran. 
+
 # Usage
 
 Compile the MieAI model in the terminal using:
